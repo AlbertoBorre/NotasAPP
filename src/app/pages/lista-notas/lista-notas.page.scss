@@ -1,0 +1,43 @@
+ion-item {
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  --background: #f0f0f0;
+  border-radius: 8px;
+  margin: 8px;
+  margin-bottom: 4px;
+}
+
+.notaTitulo {
+  font-size: 1.5rem;
+}
+
+.notaTexto {
+  font-size: 1rem;
+  color: #646464;
+  margin-top: 5px;
+}
+
+.noNotas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  text-align: center;
+  color: #646464;
+
+  ion-icon {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+  }
+}

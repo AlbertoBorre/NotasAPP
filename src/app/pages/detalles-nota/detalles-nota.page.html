@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/note-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ esNuevaNota ? 'Nueva nota' : 'Editar nota' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarNota()" [disabled]="formularioNota.invalid">
+        <ion-icon name="save-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formularioNota">
+    <ion-item>
+      <ion-label class="size" position="floating">Título *</ion-label>
+      <ion-input class="size" formControlName="titulo" type="text"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="formularioNota.get('titulo')?.errors?.['required'] && formularioNota.get('titulo')?.touched">
+      <p class="mensajeError">El título es obligatorio.</p>
+    </ion-text>
+    
+    <ion-item>
+      <ion-label class="size" position="floating">Descripción</ion-label>
+      <ion-textarea class="size" formControlName="descripcion" rows="8"></ion-textarea>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label class="size">¿Es importante?</ion-label>
+      <ion-toggle formControlName="isImportante"></ion-toggle>
+    </ion-item>
+    
+    <div class="ion-padding">
+      <ion-label class="size">Color de la nota</ion-label>
+      <div class="elegirColor">
+        <div 
+          *ngFor="let color of opcionesColores" 
+          class="opcionesColor" 
+          [style.background-color]="color"
+          [class.selected]="formularioNota.get('color')?.value === color"
+          (click)="seleccionarColor(color)">
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-content>
